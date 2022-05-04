@@ -1,20 +1,32 @@
+const mongoose = require('mongoose')
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema(
   {
     username: {
       type: String,
-      // unique: true -> Ideally, should be unique, but its up to you
+      unique: true,
+      required: true
     },
     password: String,
+
+    email: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    role: {
+      type: String,
+      enum: ['USER', 'ADMIN'],
+      default: "USER"
+    },
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   }
-);
+)
 
 const User = model("User", userSchema);
+User.syncIndexes()
 
 module.exports = User;
