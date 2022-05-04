@@ -1,10 +1,10 @@
 const express = require("express")
 const router = express.Router()
 const User = require("../models/User.model")
-//const bcrypt =require('bcryptjs')
-//const jwt =requiere('jsonwebtoken')
-//const {isAuthenticated} = require('./../middlewares/jwt.middleware')
-//transporter = require('../config/transporter.config')
+const bcrypt = require('bcryptjs')
+const jwt = requiere('jsonwebtoken')
+const { isAuthenticated } = require('./../middlewares/jwt.middleware')
+transporter = require('../config/transporter.config')
 const saltRounds = 10
 
 ///Create User
