@@ -3,7 +3,7 @@ const router = express.Router()
 const User = require("../models/User.model")
 const bcrypt = require('bcryptjs')
 const jwt = requiere('jsonwebtoken')
-const { isAuthenticated } = require('./../middlewares/jwt.middleware')
+const { isAuthenticated } = require('../middlewares/jwt.middleware')
 transporter = require('../config/transporter.config')
 const saltRounds = 10
 
@@ -32,13 +32,13 @@ router.post('/signup', (req, res) => {
             const user = { email, name, _id }
             res.status(201).json({ user })
             //para mandar Mail
-            // transporter.sendMail({
-            //   from: "imdbprojectteam@gmail.com",
-            //  to: user.email,
-            // subject: `Welcome to AutoAlert!`,
-            // text: `${user.name}, welcome to AutoAlert, your personalized reminder service! This is the mail where you are going to receive all the notifications! FUEGOTE!!!`,
-            // html: "<p>" + `${user.name},  welcome to AutoAlert, your personalized reminder service! This is the mail where you are going to receive all the notifications! FUEGOTE!!!` + "</p>"
-            //   })
+            transporter.sendMail({
+                from: "imdbprojectteam@gmail.com",
+                to: user.email,
+                subject: `Welcome to AutoAlert!`,
+                text: `${user.name}, welcome to AutoAlert, your personalized reminder service! This is the mail where you are going to receive all the notifications! FUEGOTE!!!`,
+                html: "<p>" + `${user.name},  welcome to AutoAlert, your personalized reminder service! This is the mail where you are going to receive all the notifications! FUEGOTE!!!` + "</p>"
+            })
         })
         .catch(err => {
             console.log(err)

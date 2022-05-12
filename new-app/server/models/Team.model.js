@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { Schema, model } = require("mongoose");
 
-const TeamMemberSchema = new Schema(
+const teamMemberSchema = new Schema(
     {
         name: {
             type: String,
@@ -9,7 +9,7 @@ const TeamMemberSchema = new Schema(
         },
         photo: {
             type: String,
-            default: "link"//mirar como asociar fotos sacadas con la camara 
+            default: 'link'//mirar como asociar fotos sacadas con la camara 
         },
         sidras: {
             type: Number,
