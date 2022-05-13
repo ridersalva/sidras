@@ -64,7 +64,7 @@ router.post('/login', (req, res) => {
             }
             if (bcrypt.compareSync(password, foundUser.password)) {
                 const { _id, email, name } = foundUser
-                const psyload = { _id, email, name }
+                const payload = { _id, email, name }
                 const authToken = jwt.sign(
                     payload,
                     process.env.TOKEN_SECRET,
